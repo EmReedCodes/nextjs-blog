@@ -1,28 +1,10 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
+
 import { getSortedPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
-  //can fetch data from an external API point
-  //ie:
-  // export async function getSortedPostsData() {
-  //   // Instead of the file system,
-  //   // fetch post data from an external API endpoint
-  //   const res = await fetch('..');
-  //   return res.json();
-  // }
-  //you can also go to DB directly
-  //ie:
-//   import someDatabaseSDK from 'someDatabaseSDK'
-
-// const databaseClient = someDatabaseSDK.createClient(...)
-
-// export async function getSortedPostsData() {
-//   // Instead of the file system,
-//   // fetch post data from a database
-//   return databaseClient.query('SELECT posts...')
-// }
   const allPostsData = getSortedPostsData();
   return {
     props: {
@@ -31,8 +13,8 @@ export async function getStaticProps() {
   };
 }
 
+
 export default function Home({ allPostsData }) {
-  console.log('hi')
   return (
     <Layout home>
       {/* Keep the existing code here */}
